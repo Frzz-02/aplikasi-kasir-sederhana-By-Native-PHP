@@ -1,6 +1,8 @@
 <?php 
 
+    if(isset($_POST['submit'])){
 
+    }
 
 
 
@@ -12,12 +14,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Web Kasir</title>
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
     <div class="container">
         <div class="logo-container">
-            <img src="assets/" alt="Logo" class="logo">
+            <img src="assets/rusa1.png" alt="Logo" class="logo">
         </div>
         
         <div class="login-box">

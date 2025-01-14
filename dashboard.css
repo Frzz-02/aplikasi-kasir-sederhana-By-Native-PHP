@@ -70,12 +70,16 @@ nav ul li a {
 }
 
 #destinations {
-    padding: 4rem 5%;
+    padding: 20px;
 }
 
 #destinations h2 {
     text-align: center;
-    margin-bottom: 2rem;
+    margin: 20px;
+    font-size: 2rem;
+    padding-bottom: 10px;
+   
+   
 }
 
 .destination-grid {
@@ -138,7 +142,7 @@ nav ul li a:hover {
 }
 
 #hero {
-    background-image: url('assets/su-san-lee-E_eWwM29wfU-unsplash.jpg');
+    background-image: url('assets/donat.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -153,6 +157,8 @@ nav ul li a:hover {
     padding: 50px;
     background-color: rgba(0, 0, 0, 0.5); 
     border-radius: 10px;
+    padding-left: 300px;
+    padding-right: 300px;
     
 }
 .logo-container {
