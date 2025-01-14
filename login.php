@@ -1,12 +1,51 @@
 <?php 
+session_start();
+
+    if (isset($_SESSION['login'])) {
+            header('location: dashboard.php');die;
+    }
+    
+    require 'function/koneksi.php';
+    
 
     if(isset($_POST['submit'])){
+        $data = [$_POST['username'], $_POST['password']];
+        $keterangan = login($data);
+        if($keterangan[0] > 0){
+            
 
+            
+            $_SESSION['role'] = $keterangan[2];
+            $_SESSION['login'] = true;
+            $nama = $keterangan[1];
+            
+
+
+
+            if ($keterangan[2] == 'admin'){
+
+                echo "<script type='text/javascript'>
+                var nama = '" . $nama . "';
+                alert('Selamat datang ' + nama + ' !');
+                document.location.href = 'dashboard.php';
+                </script>";
+            }else{
+
+                echo "<script type='text/javascript'>
+                        var nama = '" . $nama . "';
+                        alert('Selamat datang ' + nama + ' !');
+                        document.location.href = 'dashboard.php';
+                        </script>
+                        ";
+            }
+        }
     }
 
 
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
