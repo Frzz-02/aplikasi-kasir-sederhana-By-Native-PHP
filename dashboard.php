@@ -47,7 +47,7 @@
         
 
         <section id="destinations">
-            <h2>There are many donuts options that you can choose from popular donuts</h2>
+            <h2>Popular donuts</h2>
             <div class="destination-grid">
                 <div class="destination-card">
                     <div class="destination-card">
