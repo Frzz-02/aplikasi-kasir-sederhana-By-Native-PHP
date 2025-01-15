@@ -2,10 +2,10 @@
 session_start();
 
     if (isset($_SESSION['login'])) {
-            header('location: dashboard.php');die;
+            header('location: ../dashboard.php');die;
     }
     
-    require '../function/koneksi.php';
+    require 'function.php';
     
 
     if(isset($_POST['submit'])){
@@ -27,14 +27,14 @@ session_start();
                 echo "<script type='text/javascript'>
                 var nama = '" . $nama . "';
                 alert('Selamat datang ' + nama + ' !');
-                document.location.href = 'dashboard.php';
+                document.location.href = '../dashboard.php';
                 </script>";
             }else{
 
                 echo "<script type='text/javascript'>
                         var nama = '" . $nama . "';
                         alert('Selamat datang ' + nama + ' !');
-                        document.location.href = 'dashboard.php';
+                        document.location.href = '../dashboard.php';
                         </script>
                         ";
             }
