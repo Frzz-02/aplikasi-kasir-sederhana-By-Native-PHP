@@ -17,6 +17,6 @@ session_destroy();
 //     setcookie("user_cookie","", time() - 3600, "/sekolah");
 // }
 
-header('location: ../login.php');
+header('location: ../interface/login.php');
 exit;
 ?>
