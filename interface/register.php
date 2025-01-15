@@ -1,6 +1,24 @@
 <?php
 
-// include 'koneksi.php';
+require 'function.php';
+$message = 1;
+
+if (isset($_POST['submit'])) {
+        $kondisi = register($_POST);
+    
+        if ($kondisi[0] > 0) {//jika berhasil masukk
+            
+            echo "
+                <script>
+                alert('" . $kondisi[1] . "');
+                document.location.href='login.php';
+                </script>
+            ";
+            
+        }else{
+            $message = $kondisi[0];
+        }
+    }
 
 // $message = '';
 
@@ -54,15 +72,16 @@
         
         <!-- Login Box -->
         <div class="login-box">
-            <h2>Wellcome Admin</h2>
-            <p>Regristasi Pengguna</p>
+            <h2>Registrasi Pengguna</h2>
+            <!-- <p>Regristasi Pengguna</p> -->
             
-            <?php //if($message): ?>
-                <!-- <p style="color: green;"><?php //echo $message; ?></p> -->
-            <?php //endif; ?>
+            <?php if($message == 0){
+                echo "<p style='color: red;'>" . $kondisi[1]. "</p>";
+                }?>
+            
 
             <!-- Login Form -->
-            <form action="register.php" method="POST">
+            <form action="" method="POST">
                 <div class="input-group">
                     <label for="username" class="form-label">Username</label>
                     <input type="username" class="form-control" id="username" name="username" required>
@@ -73,7 +92,7 @@
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
 
-                <button type="submit" class="login-btn">Register</button>
+                <button type="submit" class="login-btn" name="submit">Register</button>
 
                 </div>
             </form>
