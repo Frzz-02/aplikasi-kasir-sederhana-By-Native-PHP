@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Barang</title>
+    <link rel="stylesheet" href="css/dashboard.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
 .destination-card img {
@@ -20,6 +21,24 @@
 
 </head>
 <body>
+
+<nav class="sidebar">
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="World Donuts Logo" class="logo">
+            <span class="logo-text">ADMIN DASHBOARD</span>
+        </div>
+        <ul class="nav-menu">
+        <li><a href="dashboard.php">Dashboard</a></li>
+            <li><a href="interface/register.php">Register Pengguna</a></li>
+            <li><a href="#">Transaksi</a></li>
+            <li><a href="manajemenB.php">Manajemen Barang</a></li>
+            <li><a href="manajemenP.php">Manajemen Pelanggan</a></li>
+            <li><a href="#">Invoice</a></li>
+            <li><a href="#">Laporan</a></li>
+            <li><a href="function/logout.php">Logout</a></li>
+        </ul>
+    </nav>
+    
     <div class="container my-4">
     <header class="text-center mb-4">
     <h1>Daftar Donuts</h1>
@@ -34,7 +53,7 @@
             <div class="col-md-4">
                 <div class="card">
                 <div class="card-header d-flex justify-content-end">
-                    <button class="btn btn-warning btn-sm">Edit</button>
+                    <a href="editBarang.php" class="btn btn-primary btn-sm">Edit</a>
                 </div>
 
                     <div class="destination-card">

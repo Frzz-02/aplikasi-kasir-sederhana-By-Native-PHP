@@ -1,195 +1,83 @@
-body {
-    font-family: 'Arial', sans-serif;
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
 }
 
-header {
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-nav {
+body {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+}
+
+.logo-container {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #444;
 }
 
 .logo {
-    width: 100px; 
-    height: auto; 
-}
-
-
-nav ul {
-    list-style-type: none;
-    display: flex;
-}
-
-nav ul li {
-    margin-left: 2rem;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-}
-
-
-
-#hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.cta-button {
-    display: inline-block;
-    background-color: #d80b0bd7;
-    color: #ffffff;
-    padding: 0.8rem 1.5rem;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 1rem;
-    transition: background-color 0.3s ease;
-}
-.cta-button:hover {
-    background-color: #1087d6a8;
-}
-
-#destinations {
-    padding: 20px;
-}
-
-#destinations h2 {
-    text-align: center;
-    margin: 20px;
-    font-size: 2rem;
-    padding-bottom: 10px;
-
-
-}
-
-.destination-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.destination-card {
-    background-color: #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.destination-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.destination-card h3, .destination-card p {
-    padding: 0 1rem;
-}
-
-footer {
-    background-color: #333;
-    color: #ffffff;
-    text-align: center;
-    padding: 1rem 0;
-}
-nav ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-around;
-    padding: 0;
-}
-
-nav ul li {
-    margin: 0 10px;
-}
-
-nav ul li a {
-    background-color: #d80b0bd7;
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 25px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-nav ul li a:hover {
-    background-color: #1087d6a8;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-#hero {
-    background-image: url('../assets/donat.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-content {
-    text-align: center;
-    color: white;
-    padding: 50px;
-    background-color: rgba(0, 0, 0, 0.5); 
-    border-radius: 10px;
-    padding-left: 300px;
-    padding-right: 300px;
-    
-}
-.logo-container {
-    display: flex;
-    align-items: center;
+    width: 80px;
+    height: auto;
 }
 
 .logo-text {
-    font-size: 24px;
-    font-weight: bold;
-    margin-left: 10px;
-    color: #333; /* Adjust color as needed */
-}
-/* CSS untuk card yang bisa diklik */
-.destination-card {
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
 }
 
-.destination-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.nav-menu {
+    list-style: none;
+    padding: 20px 0;
 }
 
-.clickable {
-    border: 1px solid #ccc;
-    padding: 15px;
-    border-radius: 8px;
-    background-color: white;
+.nav-menu li {
+    padding: 10px 20px;
 }
 
-.clickable:hover {
-    border-color: #007bff;
-    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.2);
-}
-
-.destination-card a {
+.nav-menu li a {
+    color: white;
     text-decoration: none;
-    color: black;
+    display: block;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
 }
 
-.destination-card h3 {
-    color: black;
+.nav-menu li a:hover {
+    background-color: #555;
 }
 
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.header {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.dashboard-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
