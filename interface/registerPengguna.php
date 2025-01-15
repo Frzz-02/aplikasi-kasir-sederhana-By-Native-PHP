@@ -27,8 +27,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Registasi Karyawan</title>
     <link rel="stylesheet" href="../css/login.css">
+
+    <style>
+        body {
+    /* Option 1: Gradient with image overlay */
+    background: linear-gradient(rgba(4, 107, 107, 0.075), rgba(22, 206, 230, 0.11)), url('../assets/serigala.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+    </style>
+
 </head>
 <body>
     <div class="container">
