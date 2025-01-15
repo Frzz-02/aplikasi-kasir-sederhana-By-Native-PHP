@@ -131,7 +131,7 @@ nav ul li a:hover {
 }
 
 #hero {
-    background-image: url('assets/donat.jpg');
+    background-image: url('../assets/donat.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;

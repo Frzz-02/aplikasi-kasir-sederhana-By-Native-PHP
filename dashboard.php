@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IXSEED Travel - Your Gateway to Japanese Wonders</title>
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
     <header>
@@ -15,7 +15,7 @@
             </div>
             <ul>
                 <li><a href="dashboard.php">Home</a></li>
-                <li><a href="registasiP.php">R Pengguna</a></li>
+                <li><a href="interface/registerPengguna.php">R Pengguna</a></li>
                 <li><a href="">Transaksi</a></li>
                 <li><a href="">M barang</a></li>
                 <li><a href="">M Pelanggan</a></li>

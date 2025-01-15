@@ -5,7 +5,7 @@ session_start();
             header('location: dashboard.php');die;
     }
     
-    require 'function/koneksi.php';
+    require '../function/koneksi.php';
     
 
     if(isset($_POST['submit'])){
@@ -51,12 +51,12 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Web Kasir</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
     <div class="container">
         <div class="logo-container">
-            <img src="assets/logo.png" alt="Logo" class="logo">
+            <img src="../assets/logo.png" alt="Logo" class="logo">
         </div>
         
         <div class="login-box">

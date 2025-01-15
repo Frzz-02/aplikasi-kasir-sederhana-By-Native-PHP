@@ -8,7 +8,7 @@
 
 body {
     /* Option 1: Gradient with image overlay */
-    background: linear-gradient(rgba(4, 107, 107, 0.075), rgba(22, 206, 230, 0.11)), url('assets/rusa.jpg');
+    background: linear-gradient(rgba(4, 107, 107, 0.075), rgba(22, 206, 230, 0.11)), url('../assets/rusa.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
