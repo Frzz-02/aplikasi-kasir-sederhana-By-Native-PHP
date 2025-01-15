@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-if (isset($_SESSION['admin']) || isset($_SESSION['pegawai'])) {
-    header('location: ../dashboard.php');exit;
-}
+// if (isset($_SESSION['admin']) || isset($_SESSION['pegawai'])) {
+//     header('location: ../dashboard.php');exit;
+// }
 
 
 

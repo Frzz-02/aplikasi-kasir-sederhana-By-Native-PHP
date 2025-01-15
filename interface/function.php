@@ -23,3 +23,28 @@ function login($data){
         }
 
 
+
+
+        function register($data){
+            global $koneksi;
+
+            $usname = mysqli_real_escape_string($koneksi, $data['username']);;
+            $pass = mysqli_real_escape_string($koneksi, $data['password']);
+
+            $query = "SELECT * FROM user_toko WHERE username= '$usname'";
+            $result = mysqli_query($koneksi, $query);
+
+            if (mysqli_num_rows($result) > 0) {
+                return [0, "Data sudah tersedia"];
+            }
+
+            
+
+
+            $query = "INSERT INTO user_toko VALUES ('', '$usname', '$pass', 'pegawai')";
+            $result = mysqli_query($koneksi, $query);
+            if (mysqli_affected_rows($koneksi)) {
+                return [1, "Data berhasil ditambahkan"];
+            }
+        }
+
