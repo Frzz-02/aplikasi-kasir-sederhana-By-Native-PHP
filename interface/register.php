@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
             echo "
                 <script>
                 alert('" . $kondisi[1] . "');
-                document.location.href='login.php';
+                document.location.href='../dashboard.php';
                 </script>
             ";
             
