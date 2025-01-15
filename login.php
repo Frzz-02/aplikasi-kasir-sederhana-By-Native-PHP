@@ -56,7 +56,7 @@ session_start();
 <body>
     <div class="container">
         <div class="logo-container">
-            <img src="assets/rusa1.png" alt="Logo" class="logo">
+            <img src="assets/logo.png" alt="Logo" class="logo">
         </div>
         
         <div class="login-box">

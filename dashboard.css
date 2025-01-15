@@ -37,18 +37,7 @@ nav ul li a {
     color: #333;
 }
 
-#hero {
-    background-image: url('assets/su-san-lee-E_eWwM29wfU-unsplash.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #ffffff;
-}
+
 
 #hero h1 {
     font-size: 3rem;
@@ -78,8 +67,8 @@ nav ul li a {
     margin: 20px;
     font-size: 2rem;
     padding-bottom: 10px;
-   
-   
+
+
 }
 
 .destination-grid {

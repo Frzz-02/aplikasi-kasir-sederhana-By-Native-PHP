@@ -33,3 +33,10 @@ function login($data){
                 return [0, "Data tidak ditemukan"];
             }
 }
+
+
+
+
+
+
+

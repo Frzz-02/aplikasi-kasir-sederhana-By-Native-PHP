@@ -21,16 +21,16 @@
                 <li><a href="">M Pelanggan</a></li>
                 <li><a href="">Invoice</a></li> 
                 <li><a href="">Laporan</a></li>
-                <li><a href="">Logout</a></li>
+                <li><a href="function/logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>
 
-    else (pegawai)       
+    <!-- else (pegawai)       
                 <li><a href="">Transaksi</a></li>
                 <li><a href="">M Pelanggan</a></li>
                 <li><a href="">Invoice</a></li> 
-                <li><a href="">Logout</a></li>
+                <li><a href="">Logout</a></li> -->
 
 
 
