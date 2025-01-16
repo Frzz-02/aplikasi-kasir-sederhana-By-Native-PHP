@@ -1,16 +1,43 @@
+<?php
+    require 'function.php';
+
+    $pelanggan = 0;
+    $transaksi = 0;
+    $produk = 0;
+    $totalP = 0;
+
+
+    $pelanggan = calculate("pelanggan");
+    $transaksi = calculate("detil_penjualan");
+    $produk = calculate("barang");
+
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Donuts - Admin Dashboard</title>
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <nav class="sidebar">
         <div class="logo-container">
-            <img src="assets/logo.png" alt="World Donuts Logo" class="logo">
+            <img src="../assets/logo.png" alt="World Donuts Logo" class="logo">
             <span class="logo-text">ADMIN DASHBOARD</span>
         </div>
         <ul class="nav-menu">
@@ -69,15 +96,15 @@
             </div>
             <div class="dashboard-card">
                 <h3>Total Produk</h3>
-                <p>0 items</p>
+                <p><?= $produk;?> items</p>
             </div>
             <div class="dashboard-card">
                 <h3>Total Pelanggan</h3>
-                <p>0 customers</p>
+                <p><?= $pelanggan;?> customers</p>
             </div>
             <div class="dashboard-card">
                 <h3>Transaksi Hari Ini</h3>
-                <p>0 transactions</p>
+                <p><?= $transaksi; ?> transactions</p>
             </div>
         </div>
     </div>
