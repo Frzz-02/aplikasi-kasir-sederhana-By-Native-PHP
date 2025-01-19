@@ -12,4 +12,18 @@
 
 
 
+    // function show($query){
+    //     global $koneksi;
+    //     $result = mysqli_query($koneksi, $query);
+
+    // if(mysqli_num_rows($result) == 0){
+    //     return [0,"data tidak ada"];
+    // }
+    // $rows = [];
+    // while($row = mysqli_fetch_assoc($result)){
+    //     $rows[] = $row; 
+    // }
+    // return $rows;
+
+    // }
 ?>
