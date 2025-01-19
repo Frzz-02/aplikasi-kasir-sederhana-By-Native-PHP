@@ -1,12 +1,61 @@
 
 <?php
-
+session_start();
 require 'function.php';
+require 'act-client/function.php';
+
+if (isset($_POST['submit'])) {
+    if ($_POST['submit'] == "edit") {
+        
+        if (updateP($_POST) > 0) {
+            echo "<script>
+
+            alert('Perubahan telah berhasil disimpan!');
+            const modal = bootstrap.Modal.getInstance(document.getElementById('editPelanggan'));
+            modal.hide();
+
+                </script>";
+
+                $_POST['submit'] = '';
+                $_POST['id'] = '';
+                $_POST['username'] = '';
+                $_POST['gender'] = '';
+    }}
 
 
 
+
+
+
+
+
+
+
+
+
+    if ($_POST['submit'] == "tambah") {
+        if (isset($_POST['token']) && $_POST['token'] === $_SESSION['token']) {
+            unset($_SESSION['token']);
+            
+            $data = [$_POST['nama'], $_POST['gender']];
+            if (add($data) > 0) {
+                echo "<script>
+                
+                        alert('Data telah berhasil ditambahkan !');
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('editPelanggan'));
+                        modal.hide();
+                        
+                    </script>";
+            }
+        }else {
+            // Token salah: Redirect ke halaman yang sama tanpa memproses data
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit();
+        }
+        
+    }
+}
 ?>
-
 
 
 
@@ -27,9 +76,8 @@ require 'function.php';
 </head>
 <body>
 
-<?php
-    require 'general/sidebar.php';
-?>
+<!-- menampilkan sidebar -->
+<?php require 'general/sidebar.php';?>
 
 
     <div class="main-content">
@@ -41,32 +89,45 @@ require 'function.php';
                 </button>
             </div>
 
+
+
+
+
+
+
+
+
+
+
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>No</th>
                                     <th>Nama Pelanggan</th>
-                                    <th>No. Telepon</th>
-                                    <th>Alamat</th>
-                                    <th>Email</th>
+                                    <th>Gender</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>John Doe</td>
-                                    <td>081234567890</td>
-                                    <td>Jl. Contoh No. 123</td>
-                                    <td>john@example.com</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editPelanggan">Edit</button>
-                                        <button class="btn btn-sm btn-danger">Hapus</button>
-                                    </td>
-                                </tr>
+
+                                <?php
+                                        $pelanggan = query("SELECT * FROM pelanggan");
+                                            $no = 1;
+
+
+
+                                            if ($pelanggan != "Data tidak ada"): 
+                                                foreach ($pelanggan as $plg):?>
+                                <?php require 'act-client/showData.php'; $no++; ?>
+                                
+                                <?php endforeach; ?>
+                        <?php else: 
+                                    echo "<tr><td colspan='4' style='text-align:center;padding: 30px 0px;'>". $pelanggan ."</td></tr>";
+                                endif;
+                            ?>
                             </tbody>
                         </table>
                     </div>
@@ -75,78 +136,27 @@ require 'function.php';
         </div>
     </div>
 
+
+
+
+
+
+
+
+
+
+
     <!-- Modal Tambah Pelanggan -->
-    <div class="modal fade" id="tambahPelanggan" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Tambah Pelanggan Baru</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label">Nama Pelanggan</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">No. Telepon</label>
-                            <input type="tel" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Alamat</label>
-                            <textarea class="form-control"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary">Simpan</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php require 'act-client/add.php' ?>
+
 
     <!-- Modal Edit Pelanggan -->
-    <div class="modal fade" id="editPelanggan" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Edit Data Pelanggan</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label">Nama Pelanggan</label>
-                            <input type="text" class="form-control" value="John Doe">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">No. Telepon</label>
-                            <input type="tel" class="form-control" value="081234567890">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Alamat</label>
-                            <textarea class="form-control">Jl. Contoh No. 123</textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control" value="john@example.com">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary">Simpan Perubahan</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <?php require 'act-client/update.php'; ?>
+    <script src="../js/show-data.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+
+
+
