@@ -103,7 +103,9 @@
         <div class="input-group my-3">
             <input type="text" class="form-control" placeholder="Cari barang...">
             <button class="btn btn-primary">Cari</button>
-            <button class="btn btn-success float-end">Tambah Barang</button>
+            <a href=".....php" class="btn btn-success">Tambah Barang</a>
+    
+</a>
         </div>
     </header>
 
