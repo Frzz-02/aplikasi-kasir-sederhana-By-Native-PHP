@@ -1,6 +1,7 @@
 
 <?php
 session_start();
+require '../function/koneksi.php';
 require 'function.php';
 require 'act-client/function.php';
 

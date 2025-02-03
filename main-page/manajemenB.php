@@ -1,3 +1,30 @@
+<?php
+    require '../function/koneksi.php';
+    require 'act-item/function.php';
+    require 'function.php';
+    
+    $items = show_item("SELECT * FROM barang");
+    
+
+    if (isset($_POST["del"])) {
+        if (del_item($_POST["id"], $_POST["img"]) > 0 ) {
+            echo "<script>
+                    alert('Barang berhasil dihapus !');
+                </script";
+        }
+    }
+
+
+    ?>
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +36,7 @@
 </head>
 <body>
 
-<?php
-    require 'general/sidebar.php';
-?>
+<?php require 'general/sidebar.php'; ?>
 
 <style>
 .destination-card img {
@@ -75,7 +100,7 @@
 }
 
 .destination-link2 img {
-    width: 100%;
+    width: 65%;
     height: auto;
     border-radius: 4px;
 }
@@ -103,219 +128,61 @@
         <div class="input-group my-3">
             <input type="text" class="form-control" placeholder="Cari barang...">
             <button class="btn btn-primary">Cari</button>
-            <a href=".....php" class="btn btn-success">Tambah Barang</a>
-    
-</a>
+            <a href="act-item/add.php" class="btn btn-success">Tambah Barang</a>
         </div>
     </header>
-
     <main class="row g-4">
+        
+        
+        
+        
+        
+        
+        
+
+        
+        
         <!-- Item -->
-        
-        <div class="col-md-4">
-            <div class="card">
-                <div class="destination-card2">
-                    <a href="...... .php" class="destination-link2">
-                        <img src="../assets/rusa.jpg" alt="Kyoto">
-                    </a>
-                    <h5 class="card-title">Donat Cream Coklat</h5>
-                    <p class="card-text">Harga: Rp 1.000.000</p>
-                    <p class="card-text">Stock : 12</p>
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <a href="editBarang.php" class="btn btn-primary btn-sm">Edit</a>
-                    <button class="btn btn-danger btn-sm">Hapus</button>
-                </div>
-            </div>
-        </div>
+        <?php if ($items[0] == 0):   echo $items[1];
+                else:   foreach($items as $item):?>
 
-        <div class="col-md-4">
-            <div class="card">
-                <div class="destination-card2">
-                    <a href="...... .php" class="destination-link2">
-                        <img src="../assets/rusa.jpg" alt="Kyoto">
-                    </a>
-                    <h5 class="card-title">Donat Cream Coklat</h5>
-                    <p class="card-text">Harga: Rp 1.000.000</p>
-                    <p class="card-text">Stock : 12</p>
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <a href="editBarang.php" class="btn btn-primary btn-sm">Edit</a>
-                    <button class="btn btn-danger btn-sm">Hapus</button>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card">
-                <div class="destination-card2">
-                    <a href="...... .php" class="destination-link2">
-                        <img src="../assets/rusa.jpg" alt="Kyoto">
-                    </a>
-                    <h5 class="card-title">Donat Cream Coklat</h5>
-                    <p class="card-text">Harga: Rp 1.000.000</p>
-                    <p class="card-text">Stock : 12</p>
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <a href="editBarang.php" class="btn btn-primary btn-sm">Edit</a>
-                    <button class="btn btn-danger btn-sm">Hapus</button>
-                </div>
-            </div>
-        </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="destination-card2">
+                            <a href="...... .php" class="destination-link2">
+                                <img src="../assets/images/items/<?=  $item["image"]; ?>" alt="<?= $item["nama_barang"]; ?>">
+                            </a>
+                        
+                            <h5 class="card-title"><?= $item["nama_barang"]; ?></h5>
+                            <p class="card-text">Harga: Rp <?= $item["harga_barang"]; ?></p>
+                            <p class="card-text">Stock : <?= $item["stock"]; ?></p>
+                        </div>
 
-        <div class="col-md-4">
-            <div class="card">
-                <div class="destination-card2">
-                    <a href="...... .php" class="destination-link2">
-                        <img src="../assets/rusa.jpg" alt="Kyoto">
-                    </a>
-                    <h5 class="card-title">Donat Cream Coklat</h5>
-                    <p class="card-text">Harga: Rp 1.000.000</p>
-                    <p class="card-text">Stock : 12</p>
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <a href="editBarang.php" class="btn btn-primary btn-sm">Edit</a>
-                    <button class="btn btn-danger btn-sm">Hapus</button>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card">
-                <div class="destination-card2">
-                    <a href="...... .php" class="destination-link2">
-                        <img src="../assets/rusa.jpg" alt="Kyoto">
-                    </a>
-                    <h5 class="card-title">Donat Cream Coklat</h5>
-                    <p class="card-text">Harga: Rp 1.000.000</p>
-                    <p class="card-text">Stock : 12</p>
+                        <div class="card-footer d-flex justify-content-between">
+                            
+                            <form action="act-item/edit.php" method="post"><button type="submit" class="btn btn-primary btn-sm" name="edit" value="<?= $item["id_barang"]; ?>">edit</button></form>
+                            
+                            <form action="" method="post">
+                                <input type="hidden" name="id" value="<?= $item["id_barang"]; ?>">
+                                <input type="hidden" name="img" value="<?= $item["image"]; ?>">
+                                <button type="submit" name="del" class="btn btn-danger btn-sm">Hapus</button>
+                            </form>
+                        
+                        </div>
+                    </div>
                 </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <a href="editBarang.php" class="btn btn-primary btn-sm">Edit</a>
-                    <button class="btn btn-danger btn-sm">Hapus</button>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card">
-                <div class="destination-card2">
-                    <a href="...... .php" class="destination-link2">
-                        <img src="../assets/rusa.jpg" alt="Kyoto">
-                    </a>
-                    <h5 class="card-title">Donat Cream Coklat</h5>
-                    <p class="card-text">Harga: Rp 1.000.000</p>
-                    <p class="card-text">Stock : 12</p>
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <a href="editBarang.php" class="btn btn-primary btn-sm">Edit</a>
-                    <button class="btn btn-danger btn-sm">Hapus</button>
-                </div>
-            </div>
-        </div>
+        <?php endforeach; endif;?>            
 
-        <div class="col-md-4">
-            <div class="card">
-                <div class="destination-card2">
-                    <a href="...... .php" class="destination-link2">
-                        <img src="../assets/rusa.jpg" alt="Kyoto">
-                    </a>
-                    <h5 class="card-title">Donat Cream Coklat</h5>
-                    <p class="card-text">Harga: Rp 1.000.000</p>
-                    <p class="card-text">Stock : 12</p>
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <a href="editBarang.php" class="btn btn-primary btn-sm">Edit</a>
-                    <button class="btn btn-danger btn-sm">Hapus</button>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card">
-                <div class="destination-card2">
-                    <a href="...... .php" class="destination-link2">
-                        <img src="../assets/rusa.jpg" alt="Kyoto">
-                    </a>
-                    <h5 class="card-title">Donat Cream Coklat</h5>
-                    <p class="card-text">Harga: Rp 1.000.000</p>
-                    <p class="card-text">Stock : 12</p>
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <a href="editBarang.php" class="btn btn-primary btn-sm">Edit</a>
-                    <button class="btn btn-danger btn-sm">Hapus</button>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card">
-                <div class="destination-card2">
-                    <a href="...... .php" class="destination-link2">
-                        <img src="../assets/rusa.jpg" alt="Kyoto">
-                    </a>
-                    <h5 class="card-title">Donat Cream Coklat</h5>
-                    <p class="card-text">Harga: Rp 1.000.000</p>
-                    <p class="card-text">Stock : 12</p>
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <a href="editBarang.php" class="btn btn-primary btn-sm">Edit</a>
-                    <button class="btn btn-danger btn-sm">Hapus</button>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card">
-                <div class="destination-card2">
-                    <a href="...... .php" class="destination-link2">
-                        <img src="../assets/rusa.jpg" alt="Kyoto">
-                    </a>
-                    <h5 class="card-title">Donat Cream Coklat</h5>
-                    <p class="card-text">Harga: Rp 1.000.000</p>
-                    <p class="card-text">Stock : 12</p>
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <a href="editBarang.php" class="btn btn-primary btn-sm">Edit</a>
-                    <button class="btn btn-danger btn-sm">Hapus</button>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card">
-                <div class="destination-card2">
-                    <a href="...... .php" class="destination-link2">
-                        <img src="../assets/rusa.jpg" alt="Kyoto">
-                    </a>
-                    <h5 class="card-title">Donat Cream Coklat</h5>
-                    <p class="card-text">Harga: Rp 1.000.000</p>
-                    <p class="card-text">Stock : 12</p>
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <a href="editBarang.php" class="btn btn-primary btn-sm">Edit</a>
-                    <button class="btn btn-danger btn-sm">Hapus</button>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card">
-                <div class="destination-card2">
-                    <a href="...... .php" class="destination-link2">
-                        <img src="../assets/rusa.jpg" alt="Kyoto">
-                    </a>
-                    <h5 class="card-title">Donat Cream Coklat</h5>
-                    <p class="card-text">Harga: Rp 1.000.000</p>
-                    <p class="card-text">Stock : 12</p>
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <a href="editBarang.php" class="btn btn-primary btn-sm">Edit</a>
-                    <button class="btn btn-danger btn-sm">Hapus</button>
-                </div>
-            </div>
-        </div>
-        
+
+
     </main>
 </div>
 

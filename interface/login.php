@@ -9,6 +9,7 @@ session_start();
     
 
     if(isset($_POST['submit'])){
+        
         $data = [$_POST['username'], $_POST['password']];
         $keterangan = login($data);
         if($keterangan[0] > 0){

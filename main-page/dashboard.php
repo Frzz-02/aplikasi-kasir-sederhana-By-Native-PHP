@@ -1,4 +1,5 @@
 <?php
+    require '../function/koneksi.php';
     require 'function.php';
 
     $pelanggan = 0;
