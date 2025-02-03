@@ -15,7 +15,7 @@ if (isset($_POST["add"])) {
     
     if ($tambahGambar[0] > 0) {
         echo "<script>
-        alert( " . $tambahGambar[1] . ");
+        alert( '" . $tambahGambar[1] . "');
         document.location.href='../manajemenB.php';
         </script>";
 

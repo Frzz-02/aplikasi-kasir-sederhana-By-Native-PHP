@@ -2,14 +2,19 @@
     require '../function/koneksi.php';
     require 'act-item/function.php';
     require 'function.php';
-    
+    session_start();
     $items = show_item("SELECT * FROM barang");
     
 
+
+
+
     if (isset($_POST["del"])) {
+        
         if (del_item($_POST["id"], $_POST["img"]) > 0 ) {
             echo "<script>
                     alert('Barang berhasil dihapus !');
+                    document.location.href= 'manajemenB.php';
                 </script";
         }
     }
