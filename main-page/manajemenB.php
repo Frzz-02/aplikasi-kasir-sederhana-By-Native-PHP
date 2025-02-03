@@ -1,5 +1,4 @@
 <?php
-
     require '../function/koneksi.php';
     require 'act-item/function.php';
     require 'function.php';
@@ -27,16 +26,8 @@
 
 
 
-$items = show_item("SELECT * FROM barang");
 
-if (isset($_POST["del"])) {
-    if (del_item($_POST["id"], $_POST["img"]) > 0) {
-        echo "<script>
-                alert('Barang berhasil dihapus !');
-            </script>";
-    }
-}
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,97 +43,154 @@ if (isset($_POST["del"])) {
 <?php require 'general/sidebar.php'; ?>
 
 <style>
-    .destination-card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 4px;
-    }
+.destination-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+}
 
-    .destination-card {
-        padding: 10px;
-    }
+.destination-card {
+    padding: 10px;
+}
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
 
-    .destination-card2 {
-        background-color: white;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 15px;
-        margin: 15px 0;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
+.input-group .btn-primary {
+    margin-right: auto;
+}
 
-    .card-title {
-        font-size: 1.25rem;
-        margin: 10px 0;
-    }
+.input-group .btn-success {
+    margin-left: 5px;
+}
 
-    .card-text {
-        font-size: 1rem;
-        color: #555;
-    }
+.btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
 
-    .card-footer {
-        padding: 10px 0;
-        display: flex;
-        justify-content: space-between;
-    }
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.destination-card2 {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.destination-link2 img {
+    width: 65%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin: 10px 0;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.card-footer {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between; /* Menggunakan space-between untuk menyebar tombol */
+}
 </style>
-
+    
 <div class="container my-4">
     <header class="text-center mb-4">
         <h1>Daftar Donuts</h1>
 
-     
-
-        <div class="input-group">
+        <div class="input-group my-3">
             <form action="" method="post">
-                <input type="search" style="width: 500px;" class="form-control" name="keyword" placeholder="Cari barang berdasarkan ID atau nama barang" aria-label="Recipient's username with two button addons">
-                <button type="submit" name="cari" class="btn btn-outline-secondary">Cari</button>
-              <a href="tambah.php" class="btn btn-outline-secondary">tambah</a>
+                <input type="search" style="width: 500px;" class="form-control" name="keyword" placeholder="Cari barang berdasarkan ID atau nama barang">
+                <button name="cari" class="btn btn-primary">Cari</button>
             </form>
             <a href="act-item/add.php" class="btn btn-success">Tambah Barang</a>
         </div>
     
-      
     </header>
     <main class="row g-4">
+        
+        
+        
+        
+        
+        
+        
+
+        
+        
         <!-- Item -->
-        <?php if ($items[0] == 0): ?>
-            <div class="col-12">
-                <div class="alert alert-warning" role="alert">
-                    <?= $items[1]; ?>
-                </div>
-            </div>
-        <?php else: ?>
-            <?php foreach ($items as $item): ?>
+        <?php if ($items[0] == 0):   echo $items[1];
+                else:   foreach($items as $item):?>
+
+
                 <div class="col-md-4">
                     <div class="card">
                         <div class="destination-card2">
                             <a href="...... .php" class="destination-link2">
-                                <img src="../assets/images/items/<?= $item["image"]; ?>" alt="<?= $item["nama_barang"]; ?>">
+                                <img src="../assets/images/items/<?=  $item["image"]; ?>" alt="<?= $item["nama_barang"]; ?>">
                             </a>
+                        
                             <h5 class="card-title"><?= $item["nama_barang"]; ?></h5>
                             <p class="card-text">Harga: Rp <?= $item["harga_barang"]; ?></p>
-                            <p class="card-text">Stock: <?= $item["stock"]; ?></p>
+                            <p class="card-text">Stock : <?= $item["stock"]; ?></p>
                         </div>
+
+
                         <div class="card-footer d-flex justify-content-between">
-                            <form action="act-item/edit.php" method="post">
-                                <button type="submit" class="btn btn-primary btn-sm" name="edit" value="<?= $item["id_barang"]; ?>">Edit</button>
-                            </form>
+                            
+                            <form action="act-item/edit.php" method="post"><button type="submit" class="btn btn-primary btn-sm" name="edit" value="<?= $item["id_barang"]; ?>">edit</button></form>
+                            
                             <form action="" method="post">
                                 <input type="hidden" name="id" value="<?= $item["id_barang"]; ?>">
                                 <input type="hidden" name="img" value="<?= $item["image"]; ?>">
                                 <button type="submit" name="del" class="btn btn-danger btn-sm">Hapus</button>
                             </form>
+                        
                         </div>
                     </div>
                 </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
-        
-        
+
+        <?php endforeach; endif;?>            
+
+
+
+
+
+
+
+
     </main>
 </div>
 

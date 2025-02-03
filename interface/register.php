@@ -47,22 +47,32 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registasi Karyawan</title>
     <link rel="stylesheet" href="../css/login.css">
-    
 
+    <style>
+        body {
+    /* Option 1: Gradient with image overlay */
+    background: linear-gradient(rgba(4, 107, 107, 0.075), rgba(22, 206, 230, 0.11)), url('../assets/serigala.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+}
+    </style>
 
 </head>
 <body>
-
-
-
     <div class="container">
         <!-- Header Section -->
-    
+        <div class="logo-container">
+            <img src="../assets/logo.png" alt="Logo" class="logo">
+        </div>
         
         <!-- Login Box -->
         <div class="login-box">
-            <h2>Registrasi</h2>
+            <h2>Registrasi Pengguna</h2>
             <!-- <p>Regristasi Pengguna</p> -->
             
             <?php if($message == 0){

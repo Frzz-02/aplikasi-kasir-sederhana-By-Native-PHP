@@ -28,7 +28,7 @@ session_start();
                 echo "<script type='text/javascript'>
                 var nama = '" . $nama . "';
                 alert('Selamat datang ' + nama + ' !');
-                document.location.href = '../main-page/dashboard.php';
+                document.location.href = '../dashboard.php';
                 </script>";
             }else{
 
@@ -54,23 +54,20 @@ session_start();
     <title>Login Web Kasir</title>
     <link rel="stylesheet" href="../css/login.css">
 
-    <style>.bg-image-vertical {
-position: relative;
-overflow: hidden;
-background-repeat: no-repeat;
-background-position: right center;
-background-size: auto 100%;
-}
-
-@media (min-width: 1025px) {
-.h-custom-2 {
-height: 100%;
-}
+    <style>
+        body {
+    /* Option 1: Gradient with image overlay */
+    background: linear-gradient(rgba(4, 107, 107, 0.075), rgba(22, 206, 230, 0.11)), url('../assets/rusa.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
     </style>
 </head>
 <body>
-    
     <div class="container">
         <div class="logo-container">
             <img src="../assets/logo.png" alt="Logo" class="logo">
