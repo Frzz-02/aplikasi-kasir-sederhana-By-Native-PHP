@@ -1,11 +1,52 @@
 <?php
     require '../../function/koneksi.php';
     require '../function.php';
+    require 'function.php';
 
-    $id = $_POST["edit"];
+    session_start();
+
+
+
+
+
+    $id = $_SESSION['id'];
+    $message = "";
+
+
+    if (isset($_POST["simpanE"])):
+
+                $edit = edit_item($_POST, $_FILES["new_image"]);
+                if ($edit[0] > 0 || $edit[1] == 'Data berhasil diupdate !'):
+                    $_SESSION['id'] = '';
+
+                    echo "<script>
+                            alert('{$edit[1]}');
+                            document.location.href='../manajemenB.php';
+                        </script>";
+            
+            
+                    else: $message = $edit[1];
+                    endif;
+
+
+        else: $_SESSION['id'] = $_POST["edit"];
+        endif;
+
+
+
+
     $items = show_item("SELECT * FROM barang where id_barang = '$id'");
     foreach($items as $item):
 ?>
+
+
+
+
+
+
+
+
+
 
 
 <!DOCTYPE html>
@@ -27,7 +68,7 @@
                     <div class="card-body">
                         <form action="" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="id" value="<?= $id; ?>">
-                            <input type="hidden" name="gambar_lama" value="<?= $item['gambar']; ?>">
+                            <input type="hidden" name="gambar_lama" value="<?= $item['image']; ?>" >
                             
                             
                             <div class="mb-3">
@@ -53,10 +94,11 @@
                             <div class="mb-3">
                                 <label class="form-label">Ganti Gambar</label>
                                 <input type="file" name="new_image" class="form-control" accept="image/*">
+                                <p class="mt-1 mb-5 text-danger"><?= $message; ?></p>
                             </div>
 
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                <button type="submit" name="simpanE" value="edit" class="btn btn-primary">Simpan Perubahan</button>
                                 <a href="../manajemenB.php" class="btn btn-secondary">Kembali</a>
                             </div>
                         </form>

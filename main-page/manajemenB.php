@@ -1,7 +1,31 @@
 <?php
-require '../function/koneksi.php';
-require 'act-item/function.php';
-require 'function.php';
+
+    require '../function/koneksi.php';
+    require 'act-item/function.php';
+    require 'function.php';
+    session_start();
+
+
+    if (isset($_POST["cari"])) {
+        $items = show_item("SELECT * FROM barang WHERE nama_barang LIKE '%" . $_POST["keyword"] . "%'  OR id_barang LIKE '%" . $_POST["keyword"] . "%'");
+    
+    }else{
+        $items = show_item("SELECT * FROM barang");
+    }
+    
+
+
+
+
+    require 'act-item/del.php';
+
+
+    ?>
+
+
+
+
+
 
 $items = show_item("SELECT * FROM barang");
 
@@ -69,11 +93,19 @@ if (isset($_POST["del"])) {
 <div class="container my-4">
     <header class="text-center mb-4">
         <h1>Daftar Donuts</h1>
+
+     
+
         <div class="input-group">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username with two button addons">
-  <button class="btn btn-outline-secondary" type="button">cari</button>
-  <a href="tambah.php" class="btn btn-outline-secondary">tambah</a>
-</div>
+            <form action="" method="post">
+                <input type="search" style="width: 500px;" class="form-control" name="keyword" placeholder="Cari barang berdasarkan ID atau nama barang" aria-label="Recipient's username with two button addons">
+                <button type="submit" name="cari" class="btn btn-outline-secondary">Cari</button>
+              <a href="tambah.php" class="btn btn-outline-secondary">tambah</a>
+            </form>
+            <a href="act-item/add.php" class="btn btn-success">Tambah Barang</a>
+        </div>
+    
+      
     </header>
     <main class="row g-4">
         <!-- Item -->
