@@ -103,25 +103,25 @@ function edit_item($data, $image){
     $harga = mysqli_real_escape_string($koneksi, htmlspecialchars( $data["harga"]));
     $stok = mysqli_real_escape_string($koneksi, htmlspecialchars( $data["stok"]));
     $id = mysqli_real_escape_string($koneksi, htmlspecialchars( $data["id"]));
-    $gambarLama = mysqli_real_escape_string($koneksi, htmlspecialchars( $data["gambar_lama"]));
+    $gambarLama = $data["gambar_lama"];
 
     if ($image["error"]  === 4) {
         $gambar = $gambarLama;
+
+        
     }else{
         $gambar = upload($image);
         if ($gambar[0] == 0) {
             return [0, $gambar[1]];
         }
+
+            if (file_exists("../../assets/images/items/$gambarLama")) unlink("../../assets/images/items/$gambarLama");
+            $gambar = $gambar[1];
     }
 
 
 
-
-    if (file_exists("../../assets/images/items/$gambarLama")) unlink("../../assets/images/items/$gambarLama");
-
-
-    $gambar[1] = mysqli_real_escape_string($koneksi, htmlspecialchars( $gambar[1]));
-    $query = "UPDATE barang SET nama_barang='$namaB', harga_barang='$harga', stock='$stok', `image`='$gambar[1]' WHERE id_barang='$id' ";
+    $query = "UPDATE barang SET nama_barang='$namaB', harga_barang='$harga', stock='$stok', `image`='$gambar' WHERE id_barang='$id' ";
 
     mysqli_query($koneksi, $query);
     return [mysqli_affected_rows($koneksi), 'Data berhasil diupdate !'];

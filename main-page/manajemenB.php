@@ -3,21 +3,20 @@
     require 'act-item/function.php';
     require 'function.php';
     session_start();
-    $items = show_item("SELECT * FROM barang");
+
+
+    if (isset($_POST["cari"])) {
+        $items = show_item("SELECT * FROM barang WHERE nama_barang LIKE '%" . $_POST["keyword"] . "%'  OR id_barang LIKE '%" . $_POST["keyword"] . "%'");
+    
+    }else{
+        $items = show_item("SELECT * FROM barang");
+    }
     
 
 
 
 
-    if (isset($_POST["del"])) {
-        
-        if (del_item($_POST["id"], $_POST["img"]) > 0 ) {
-            echo "<script>
-                    alert('Barang berhasil dihapus !');
-                    document.location.href= 'manajemenB.php';
-                </script";
-        }
-    }
+    require 'act-item/del.php';
 
 
     ?>
@@ -130,11 +129,15 @@
 <div class="container my-4">
     <header class="text-center mb-4">
         <h1>Daftar Donuts</h1>
+
         <div class="input-group my-3">
-            <input type="text" class="form-control" placeholder="Cari barang...">
-            <button class="btn btn-primary">Cari</button>
+            <form action="" method="post">
+                <input type="search" style="width: 500px;" class="form-control" name="keyword" placeholder="Cari barang berdasarkan ID atau nama barang">
+                <button name="cari" class="btn btn-primary">Cari</button>
+            </form>
             <a href="act-item/add.php" class="btn btn-success">Tambah Barang</a>
         </div>
+    
     </header>
     <main class="row g-4">
         

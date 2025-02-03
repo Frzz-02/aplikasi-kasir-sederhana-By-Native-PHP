@@ -9,39 +9,28 @@
 
 
 
-
-
-
-
-
-    if (!isset($_POST["simpanE"])) {
-        $_SESSION['id'] = $_POST["edit"];
-    }
-
-
-
-
-
-
-
-
     $id = $_SESSION['id'];
     $message = "";
-    if (isset($_POST["simpanE"])) {
-        
-        $edit = edit_item($_POST, $_FILES["new_image"]);
-        if ($edit[0] > 0) {
-            $_SESSION['id'] = '';
 
-            // header("location: ../manajemenB.php");
-            echo "<script>
-                    alert('{$edit[1]} silahkan berpindah halaman');
-                    document.location.href='../manajemenB.php';
-                </script>";
-        }else{
-            $message = $edit[1];
-        }
-    }
+
+    if (isset($_POST["simpanE"])):
+
+                $edit = edit_item($_POST, $_FILES["new_image"]);
+                if ($edit[0] > 0 || $edit[1] == 'Data berhasil diupdate !'):
+                    $_SESSION['id'] = '';
+
+                    echo "<script>
+                            alert('{$edit[1]}');
+                            document.location.href='../manajemenB.php';
+                        </script>";
+            
+            
+                    else: $message = $edit[1];
+                    endif;
+
+
+        else: $_SESSION['id'] = $_POST["edit"];
+        endif;
 
 
 
@@ -49,6 +38,15 @@
     $items = show_item("SELECT * FROM barang where id_barang = '$id'");
     foreach($items as $item):
 ?>
+
+
+
+
+
+
+
+
+
 
 
 <!DOCTYPE html>
