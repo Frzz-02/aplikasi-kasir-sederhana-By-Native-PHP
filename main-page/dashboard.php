@@ -36,39 +36,60 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
 <?php
     require 'general/sidebar.php';
 ?>
 
+<div class="main-content">
+    <div class="header">
+        <h1>Welcome to World Donuts Admin Dashboard</h1>
+    </div>
 
-
-
-
-
-    <div class="main-content">
-        <div class="header">
-            <h1>Welcome to World Donuts Admin Dashboard</h1>
-        </div>
-
-        <div class="dashboard-grid">
-            <div class="dashboard-card">
-                <h3>Total Penjualan</h3>
-                <p>Rp 0</p>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h3>Total Penjualan</h3>
+                        <p>Rp 0</p>
+                    </div>
+                </div>
             </div>
-            <div class="dashboard-card">
-                <h3>Total Produk</h3>
-                <p><?= $produk;?> items</p>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h3>Total Produk</h3>
+                        <p><?= $produk;?> items</p>
+                    </div>
+                </div>
             </div>
-            <div class="dashboard-card">
-                <h3>Total Pelanggan</h3>
-                <p><?= $pelanggan;?> customers</p>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h3>Total Pelanggan</h3>
+                        <p><?= $pelanggan;?> customers</p>
+                    </div>
+                </div>
             </div>
-            <div class="dashboard-card">
-                <h3>Transaksi Hari Ini</h3>
-                <p><?= $transaksi; ?> transactions</p>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h3>Transaksi Hari Ini</h3>
+                        <p><?= $transaksi; ?> transactions</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</div>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+
+
