@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transaksi</title>
+    <title>Daftar Barang</title>
     <link rel="stylesheet" href="../css/dashboard.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .table-container {
+            margin-top: 20px;
+        }
+        .total-container {
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <?php require 'general/sidebar.php'; ?>
-
+<?php
+    require 'general/sidebar.php';
+?>
     <div class="container">
         <h1 class="mt-4">Daftar Barang</h1>
         
@@ -57,18 +61,63 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- Total Harga dan Pembayaran -->
+        <div class="total-container">
+        <div class="form-group">
+            <form name="fr" action="">
+
+                <label for="customer-id">Harga Total:</label>
+                <input type="text" id="total-price" name="ht" class="form-control" value="30000" placeholder="Masukkan ID Pelanggan" disabled>
+            </div>
+            <h4>Total Harga: <span id="total-price">30000</span></h4>
+            <div class="form-group">
+                <label for="customer-id">ID Pelanggan:</label>
+                <input type="text" id="customer-id" class="form-control" placeholder="Masukkan ID Pelanggan">
+            </div>
+            <div class="form-group">
+                <label for="payment">Pembayaran:</label>
+                <input type="number" id="payment" class="form-control" placeholder="Masukkan Jumlah Pembayaran">
+            </div>
+            <button id="submit" class="btn btn-primary">Proses Pembayaran</button>
+        </form>
+        </div>
     </div>
 
     <script>
+
+        document.getElementById('search').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                // Mencegah aksi default (jika ada)
+                // event.preventDefault();
+                // // Mengambil nilai input
+                // const customerId = this.value;
+                // // Lakukan sesuatu dengan customerId jika perlu
+                // console.log('ID Pelanggan:', customerId);
+                // // Reset nilai input
+                this.value = '';
+                this.blur();
+            }
+        });
+
+
+
+
+
+
         // Fungsi untuk menghitung subtotal
         function calculateSubtotal() {
             const rows = document.querySelectorAll('#item-list tr');
+            let total = 0;
             rows.forEach(row => {
                 const price = parseFloat(row.cells[2].innerText);
                 const qty = parseInt(row.querySelector('.qty').value);
                 const subtotal = price * qty;
                 row.querySelector('.subtotal').innerText = subtotal;
+                total += subtotal;
             });
+            document.forms['fr']['ht'].value = total;
+            // document.getElementById('total-price').innerText = total;
         }
 
         // Event listener untuk qty input
@@ -86,27 +135,28 @@
             }
         });
 
-        // Event listener untuk pencarian
-        document.getElementById('search').addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            const rows = document.querySelectorAll('#item-list tr');
-            rows.forEach(row => {
-                const itemName = row.cells[1].innerText.toLowerCase();
-                if (itemName.includes(searchTerm)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
+       // Event listener untuk tombol tambah barang
+
+
+        // Event listener untuk tombol proses pembayaran
+        document.getElementById('submit').addEventListener('click', function() {
+            const customerId = document.getElementById('customer-id').value;
+            const payment = parseFloat(document.getElementById('payment').value);
+            const totalPrice = parseFloat(document.getElementById('total-price').innerText);
+
+            if (customerId === '') {
+                alert('ID Pelanggan harus diisi!');
+                return;
+            }
+
+            if (isNaN(payment) || payment < totalPrice) {
+                alert('Jumlah pembayaran tidak valid atau kurang dari total harga!');
+                return;
+            }
+
+            alert(`Pembayaran berhasil untuk ID Pelanggan: ${customerId}. Kembalian: ${payment - totalPrice}`);
         });
     </script>
-    
-
-    
-    
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
