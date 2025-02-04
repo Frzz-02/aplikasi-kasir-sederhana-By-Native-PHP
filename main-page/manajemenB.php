@@ -85,9 +85,9 @@ require 'act-item/del.php';
             <h1>Daftar Donuts</h1>
             <form action="" method="post">
                 <div class="input-group mb-3">
-                    <input type="search" class="form-control" name="keyword" placeholder="Cari barang berdasarkan ID atau nama barang">
-                    <button class="btn btn-outline-secondary" type="submit" name="cari">Search</button>
-                    <a href="act-item/add.php" class="btn btn-success rounded-3" style="margin-left: 15px;">+</a>
+                    <input type="search" class="form-control p-2" name="keyword" placeholder="Cari barang berdasarkan ID atau nama barang">
+                    <button class="btn btn-outline-secondary rounded-end-5 p-2 px-4" type="submit" name="cari">Search</button>
+                    <a href="act-item/add.php" class="btn btn-success rounded-3 fw-bold px-3 ms-3" style="padding: 12px; margin-left: 15px;">+</a>
                 </div>
             </form>
         </header>
