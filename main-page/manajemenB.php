@@ -68,14 +68,7 @@
     margin-left: 5px;
 }
 
-.btn {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-    color: white;
-    cursor: pointer;
-}
+
 
 .btn-primary {
     background-color: #007bff;
@@ -129,17 +122,27 @@
 <div class="container my-4">
     <header class="text-center mb-4">
         <h1>Daftar Donuts</h1>
-
-        <div class="input-group my-3">
-            <form action="" method="post">
-                <input type="search" style="width: 500px;" class="form-control" name="keyword" placeholder="Cari barang berdasarkan ID atau nama barang">
-                <button name="cari" class="btn btn-primary">Cari</button>
-            </form>
-            <a href="act-item/add.php" class="btn btn-success">Tambah Barang</a>
+        
+       
+        <form action="" method="post">
+        <div class="input-group mb-3">
+            <input type="search" class="form-control" name="keyword" placeholder="Cari barang berdasarkan ID atau nama barang" aria-label="Cari barang berdasarkan ID atau nama barang" >
+            <button class="btn btn-outline-secondary" type="submit" name="cari" id="button-addon2">Search</button>
+            <a href="act-item/add.php" class="btn btn-success rounded-3" style="margin-left: 15px; ">+</a>
         </div>
-    
+
+    </form>
     </header>
-    <main class="row g-4">
+
+    <div class="row"></div>
+        <div class="col-md-12">
+            <?php if (isset($error)): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?= $error; ?>
+                </div>
+            <?php endif; ?>
+</div>
+
         
         
         
@@ -148,8 +151,7 @@
         
         
 
-        
-        
+       
         <!-- Item -->
         <?php if ($items[0] == 0):   echo $items[1];
                 else:   foreach($items as $item):?>
