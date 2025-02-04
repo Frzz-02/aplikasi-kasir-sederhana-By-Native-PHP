@@ -14,4 +14,3 @@
             <li><a href="../function/logout.php">Logout</a></li>
         </ul>
     </nav>
-    
