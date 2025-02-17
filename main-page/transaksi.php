@@ -24,7 +24,7 @@
         
         <!-- Search Bar -->
         <div class="form-group">
-            <input type="text" id="search" class="form-control" placeholder="Cari barang...">
+            <input type="text" id="search" class="form-control" placeholder="Cari berdasarkan kode barang">
         </div>
 
         <!-- Table -->
@@ -41,11 +41,14 @@
                     </tr>
                 </thead>
                 <tbody id="item-list">
-                    <tr>
+                    <!-- <tr>
                         <td>001</td>
                         <td>Barang A</td>
                         <td>10000</td>
-                        <td><input type="number" class="form-control qty" value="1" min="1"></td>
+                        <td>
+                            <input type="number" class="form-control qty" value="1" min="1">
+                            <p class="text-danger mb-0">Input tidak boleh kurang dari nol</p>
+                        </td>
                         <td class="subtotal">10000</td>
                         <td><button class="btn btn-danger btn-sm delete">Hapus</button></td>
                     </tr>
@@ -53,10 +56,13 @@
                         <td>002</td>
                         <td>Barang B</td>
                         <td>20000</td>
-                        <td><input type="number" class="form-control qty" value="1" min="1"></td>
+                        <td>
+                            <input type="number" class="form-control qty" value="1" min="1">
+                            <p class="text-danger mb-0">Input tidak boleh kurang dari nol</p>
+                        </td>
                         <td class="subtotal">20000</td>
                         <td><button class="btn btn-danger btn-sm delete">Hapus</button></td>
-                    </tr>
+                    </tr> -->
                     <!-- Tambahkan lebih banyak barang sesuai kebutuhan -->
                 </tbody>
             </table>
@@ -84,16 +90,43 @@
         </div>
     </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <!-- <script src="../js/script.js"></script> -->
     <script>
 
         document.getElementById('search').addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {
                 // Mencegah aksi default (jika ada)
                 // event.preventDefault();
-                // // Mengambil nilai input
-                // const customerId = this.value;
-                // // Lakukan sesuatu dengan customerId jika perlu
-                // console.log('ID Pelanggan:', customerId);
+
+                let searchValue = this.value.trim(); // Hapus spasi di awal/akhir input
+                if (searchValue === '') {
+                    alert("Masukkan kode barang terlebih dahulu!");
+                    return;
+                }
+
+                
+                $.get('../ajax/ajaxB.php?search=' + searchValue, function(data) {
+                    if(data) {
+                        $('#item-list').append(data); // Menambah baris baru ke dalam tabel
+                    } else {
+                        alert("Barang tidak ditemukan!");
+                    }
+                });
+
                 // // Reset nilai input
                 this.value = '';
                 this.blur();
@@ -110,8 +143,13 @@
             const rows = document.querySelectorAll('#item-list tr');
             let total = 0;
             rows.forEach(row => {
-                const price = parseFloat(row.cells[2].innerText);
-                const qty = parseInt(row.querySelector('.qty').value);
+                const price = parseFloat(row.cells[2].innerText) || 0;
+                const qty = parseInt(row.querySelector('.qty').value) || 0;
+                // if (qty <= 0){
+                //     $(".text-danger").show();
+                // }else{
+                //     $(".text-danger").hide();
+                // }
                 const subtotal = price * qty;
                 row.querySelector('.subtotal').innerText = subtotal;
                 total += subtotal;
