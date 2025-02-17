@@ -18,7 +18,12 @@
     <td><?= $items["nama_barang"]; ?></td>
     <td><?= $items["harga_barang"]; ?></td>
     <td class="t">
-        <input type="number" class="form-control qty" value="1" min="1">
+        <input type="number" name="qty[]" class="form-control qty" value="1" min="1">
+        <input type="hidden" name="id_barang[]" value="<?= $items["id_barang"]; ?>" class="id_barang">
+        <input type="hidden" name="nama_barang[]" value="<?= $items["nama_barang"]; ?>" class="nama_barang">
+        <input type="hidden" name="harga_barang[]" value="<?= $items["harga_barang"]; ?>" class="harga_barang">
+        <input type="hidden" name="stock[]" value="<?= $items["stock"]; ?>" class="stock">
+
         <p class="text-danger mb-0">Input tidak boleh kurang dari nol</p>
     </td>
     <td class="subtotal">0</td>
