@@ -9,7 +9,8 @@
             <li><a href="transaksi.php">Transaksi</a></li>
             <li><a href="manajemenB.php">Manajemen Barang</a></li>
             <li><a href="manajemenP.php">Manajemen Pelanggan</a></li>
-            <li><a href="#">Invoice</a></li>
+            <li><a href="invoice.php">Invoice</a></li>
+            <li><a href="detailTransaksi.php">Detail Transaksi</a></li>
             <li><a href="#">Laporan</a></li>
             <li><a href="../function/logout.php">Logout</a></li>
         </ul>
