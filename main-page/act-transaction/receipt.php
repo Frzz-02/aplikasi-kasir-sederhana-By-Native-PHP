@@ -40,8 +40,6 @@
             <div class="text-center fw-semibold fs-3">
                 pembayaran berhasil
                 <?= $token; ?>
-
-                <br><br><?php var_dump($_POST); ?>
             </div>
         </div>
 
