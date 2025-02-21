@@ -95,20 +95,24 @@
                 <label for="customer-id">Harga Total:</label>
                 <input type="text" id="total-price" name="total-price" class="form-control" value="30000" placeholder="Masukkan ID Pelanggan" disabled>
             </div>
+            <div style="height: 20px;"></div>
             <!-- <h4>Total Harga: <span id="total-price">30000</span></h4> -->
             <div class="form-group">
                 <label for="customer-id">ID Pelanggan:</label>
                 <input name="id-cust" type="text" id="customer-id" class="form-control" placeholder="Masukkan ID Pelanggan">
             </div>
+            <div style="height: 20px;"></div>
             <div class="form-group">
-                <label for="payment">Pembayaran:</label>
-                <input name="pay" type="number" id="payment" class="form-control" placeholder="Masukkan Jumlah Pembayaran">
-            </div>
+    <label for="payment">Pembayaran:</label>
+    <input name="pay" type="number" id="payment" class="form-control" placeholder="Masukkan Jumlah Pembayaran">
+</div>
 
-            <button id="submit" type="button" name="transaksiModal"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#transaction">
-                Proses Pembayaran
-            </button>
+<!-- Tambahkan div kosong untuk jarak -->
+<div style="height: 20px;"></div>
 
+<button id="submit" type="button" name="transaksiModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#transaction">
+    Proses Pembayaran
+</button>
             
         </form>
     </div>
@@ -118,6 +122,7 @@
 <form action="act-transaction/receipt.php" method="post">
     <?php require 'act-transaction/confirm-pay.php'; ?>
 </form>
+
 
 
 
@@ -155,3 +160,5 @@
 
 </body>
 </html>
+
+
