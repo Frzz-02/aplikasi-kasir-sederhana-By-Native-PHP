@@ -2,32 +2,32 @@
     require '../../function/koneksi.php';
     require 'function.php';
 
-    // $token = generate_ID_Transaction();
-    // $id_barang = $_POST["id_barang"];
-    // $nama_barang = $_POST["nama_barang"];
-    // $stock = $_POST["stock"];
-    // $harga_subtotal = $_POST["harga_subtotal"];
-    // $id_cust = $_POST["id_cust"];
-    // $qty = $_POST["qty"];
-    // $harga_total = $_POST["harga_total"];
-    // $cash = $_POST["cash"];
-    // $cashback = $_POST["cashBack"];
+    $token = generate_ID_Transaction();
+    $id_barang = $_POST["id_barang"];
+    $nama_barang = $_POST["nama_barang"];
+    $stock = $_POST["stock"];
+    $harga_subtotal = $_POST["harga_subtotal"];
+    $id_cust = $_POST["id_cust"];
+    $qty = $_POST["qty"];
+    $harga_total = $_POST["harga_total"];
+    $cash = $_POST["cash"];
+    $cashback = $_POST["cashBack"];
 
-       
+    
 
-        // Isi manual untuk variabel-variabel lainnya
-    $token = "TRX001"; // ID Transaksi
-    $id_barang = "BRG001"; // ID Barang
-    $nama_barang = "Laptop ASUS"; // Nama Barang
-    $stock = 10; // Stock barang
-    $harga_subtotal = 5000000; // Harga subtotal
-    $id_cust = "CUST001"; // ID Customer
-    $qty = 2; // Quantity (jumlah barang yang dibeli)
-    $harga_total = 10000000; // Harga total
-    $cash = 12000000; // Uang yang dibayarkan
-    $cashback = 2000000; // Kembalian
+    //     // Isi manual untuk variabel-variabel lainnya
+    // $token = "TRX001"; // ID Transaksi
+    // $id_barang = "BRG001"; // ID Barang
+    // $nama_barang = "Laptop ASUS"; // Nama Barang
+    // $stock = 10; // Stock barang
+    // $harga_subtotal = 5000000; // Harga subtotal
+    // $id_cust = "CUST001"; // ID Customer
+    // $qty = 2; // Quantity (jumlah barang yang dibeli)
+    // $harga_total = 10000000; // Harga total
+    // $cash = 12000000; // Uang yang dibayarkan
+    // $cashback = 2000000; // Kembalian
 
-  
+
     
 
 ?>
@@ -146,17 +146,22 @@
                         <th>Nama Barang</th>
                         <th>Qty</th>
                         <th>Harga Subtotal</th>
-                        <th>Total</th>
+                    
                     </tr>
                 </thead>
                 <tbody>
+
+                
+                <?php for ($i=0; $i < count($id_barang); $i++): ?>
                     <tr>
-                        <td><?= $id_barang; ?></td>
-                        <td><?= $nama_barang; ?></td>
-                        <td><?= $qty; ?></td>
-                        <td>Rp <?= number_format($harga_subtotal, 0, ',', '.'); ?></td>
-                        <td>Rp <?= number_format($harga_total, 0, ',', '.'); ?></td>
+                        <td><?= $id_barang[$i]; ?></td>
+                        <td><?= $nama_barang[$i]; ?></td>
+                        <td><?= $qty[$i]; ?></td>
+                        <td>Rp <?= number_format($harga_subtotal[$i], 0, ',', '.'); ?></td>
                     </tr>
+                <?php endfor; ?>
+                
+                
                 </tbody>
             </table>
         </div>
