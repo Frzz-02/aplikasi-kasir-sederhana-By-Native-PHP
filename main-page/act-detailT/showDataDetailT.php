@@ -6,8 +6,8 @@
     <td>
         <form action="invoice.php" method="post">
             <input type="hidden" name="id_barang" value="<?= $pj['id_barang']; ?>">
-            <input type="hidden" name="nomor_transaksi" value="<?= $pj['id_barang']; ?>">
-            <input type="hidden" name="id_pelanggan" value="<?= $pj['id_barang']; ?>">
+            <input type="hidden" name="nomor_transaksi" value="<?= $pj['nomor_transaksi']; ?>">
+            <input type="hidden" name="id_pelanggan" value="<?= $pj['id_pelanggan']; ?>">
 
             <button type="submit" class="btn btn-sm btn-info" name="Invoice">Invoice</button>
         </form>

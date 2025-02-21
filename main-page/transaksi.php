@@ -37,8 +37,6 @@
 
 
 
-        <?php var_dump($_POST); ?>
-
 
 
         <!-- Table -->
@@ -97,7 +95,7 @@
                 <label for="customer-id">Harga Total:</label>
                 <input type="text" id="total-price" name="total-price" class="form-control" value="30000" placeholder="Masukkan ID Pelanggan" disabled>
             </div>
-            <h4>Total Harga: <span id="total-price">30000</span></h4>
+            <!-- <h4>Total Harga: <span id="total-price">30000</span></h4> -->
             <div class="form-group">
                 <label for="customer-id">ID Pelanggan:</label>
                 <input name="id-cust" type="text" id="customer-id" class="form-control" placeholder="Masukkan ID Pelanggan">

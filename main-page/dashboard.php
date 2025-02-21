@@ -13,7 +13,7 @@
         global $koneksi; // Pastikan koneksi database tersedia
         $query = "
             SELECT dp.id_transaksi, dp.id_barang, dp.jml_barang, dp.harga_satuan, 
-                   b.nama_barang,  
+                b.nama_barang,  
                    (dp.jml_barang * dp.harga_satuan) AS total 
             FROM detil_penjualan dp
             JOIN barang b ON dp.id_barang = b.id_barang
