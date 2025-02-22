@@ -2,7 +2,15 @@
     require '../../function/koneksi.php';
     require 'function.php';
 
+
+
     $token = generate_ID_Transaction();
+    insert_data_transaksi($_POST, $token);
+
+
+// var_dump($_POST);die;
+
+    
     $id_barang = $_POST["id_barang"];
     $nama_barang = $_POST["nama_barang"];
     $stock = $_POST["stock"];
@@ -12,23 +20,6 @@
     $harga_total = $_POST["harga_total"];
     $cash = $_POST["cash"];
     $cashback = $_POST["cashBack"];
-
-    
-
-    //     // Isi manual untuk variabel-variabel lainnya
-    // $token = "TRX001"; // ID Transaksi
-    // $id_barang = "BRG001"; // ID Barang
-    // $nama_barang = "Laptop ASUS"; // Nama Barang
-    // $stock = 10; // Stock barang
-    // $harga_subtotal = 5000000; // Harga subtotal
-    // $id_cust = "CUST001"; // ID Customer
-    // $qty = 2; // Quantity (jumlah barang yang dibeli)
-    // $harga_total = 10000000; // Harga total
-    // $cash = 12000000; // Uang yang dibayarkan
-    // $cashback = 2000000; // Kembalian
-
-
-    
 
 ?>
 
@@ -90,7 +81,7 @@
             font-size: 0.9rem;
             color: #6c757d;
         }
-       
+    
         .print-button {
             position: fixed;
             top: 20px;

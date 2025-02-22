@@ -14,7 +14,7 @@ $query = "SELECT detil_penjualan.id_barang, detil_penjualan.jml_barang, detil_pe
         FROM detil_penjualan INNER JOIN penjualan ON detil_penjualan.id_transaksi = penjualan.id_transaksi 
         INNER JOIN barang ON detil_penjualan.id_barang = barang.id_barang 
         INNER JOIN pelanggan ON penjualan.id_pelanggan = pelanggan.id_pelanggan 
-            WHERE detil_penjualan.id_barang = '$noItem' AND penjualan.id_pelanggan = '$noClient' AND penjualan.nomor_transaksi = '$noTrans'";
+            WHERE penjualan.id_pelanggan = '$noClient' AND penjualan.nomor_transaksi = '$noTrans'";
 
 $data_transaksi = show_item($query);
 $id_barang = [];
@@ -22,9 +22,6 @@ $qty_barang_dibeli = [];
 $harga_subtotal = [];
 $nama_barang = [];
 $harga_barang = [];
-
-
-
 
 
 
@@ -43,7 +40,7 @@ $harga_barang = [];
         $harga_barang[] = $value['harga_barang'];
     }
     
-
+    
 
     
 
@@ -55,7 +52,7 @@ $harga_barang = [];
     $id_pelanggan = $data_transaksi[0]['id_pelanggan'];
 
 
-
+var_dump($data_transaksi);
 
 
 ?>
