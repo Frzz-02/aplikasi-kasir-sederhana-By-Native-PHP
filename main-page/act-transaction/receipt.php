@@ -4,8 +4,8 @@
 
 
 
-    $token = generate_ID_Transaction();
-    insert_data_transaksi($_POST, $token);
+    $token = '121212';//generate_ID_Transaction();
+    // insert_data_transaksi($_POST, $token);
 
 
 // var_dump($_POST);die;
@@ -167,9 +167,34 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    
+    
+    
+    
+    
+    
+    
     <script>
     window.onload = function() {
-        window.print();
+        window.print(); // Membuka dialog print
+
+    // Jika user selesai print atau menekan cancel, langsung redirect
+    window.onafterprint = function() {
+        // document.body.style.visibility = "visible";
+        window.location.href = "../transaksi.php";
+    };
+
+    // Jika user menekan "Cancel" atau keluar dari print dialog
+    window.onblur = function() {
+        window.location.href = "../transaksi.php";
+    };
+
+    // Tetap redirect otomatis setelah 5 detik jika tidak ada tindakan
+    setTimeout(function() {
+        // document.body.style.visibility = "hidden";
+        window.location.href = "../transaksi.php";
+    }, 15000);
     }
 </script>
 </body>
