@@ -16,7 +16,7 @@
         <div class="modal-body">
             <!-- <table class="table"></table> -->
             <table class="table pt-5" id="tabelBarang">
-                <tbody class="p-5">
+                <tbody class="p-5 tabel-body">
 
                 </tbody>
             </table>

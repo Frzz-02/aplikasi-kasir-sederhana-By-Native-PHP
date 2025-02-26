@@ -11,6 +11,8 @@ if (isset($_POST["cari"])) {
 }
 
 require 'act-item/del.php';
+
+$style_pagination = [ " ", " ", "active", " " ];
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +24,14 @@ require 'act-item/del.php';
     <link rel="stylesheet" href="../css/dashboard.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+
+        .nav .child-nav a:hover{
+            background-color: black !important;
+            padding: 7px;
+            border-radius: 10px !important;
+        }
+
+
         .destination-card img {
             width: 100%;
             height: 200px;
@@ -123,7 +133,8 @@ require 'act-item/del.php';
             <?php endif; ?>
         </main>
     </div>
-
+    
+    <script src="../js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -9,30 +9,30 @@
 
 
 
-    $id = $_SESSION['id'];
     $message = "";
-
+    
 
     if (isset($_POST["simpanE"])):
-
-                $edit = edit_item($_POST, $_FILES["new_image"]);
-                if ($edit[0] > 0 || $edit[1] == 'Data berhasil diupdate !'):
-                    $_SESSION['id'] = '';
-
+        
+        $edit = edit_item($_POST, $_FILES["new_image"]);
+        if ($edit[0] > 0 || $edit[1] == 'Data berhasil diupdate !'):
+            $_SESSION['id'] = '';
+            
                     echo "<script>
-                            alert('{$edit[1]}');
+                    alert('{$edit[1]}');
                             document.location.href='../manajemenB.php';
                         </script>";
-            
-            
+                        
+                        
                     else: $message = $edit[1];
-                    endif;
-
-
-        else: $_SESSION['id'] = $_POST["edit"];
+                endif;
+                
+                
+            else: $_SESSION['id'] = $_POST["edit"];
         endif;
-
-
+        
+        $id = $_SESSION['id'];
+        
 
 
     $items = show_item("SELECT * FROM barang where id_barang = '$id'");

@@ -2,7 +2,15 @@
     require '../../function/koneksi.php';
     require 'function.php';
 
+
+
     $token = generate_ID_Transaction();
+    insert_data_transaksi($_POST, $token);
+
+
+// var_dump($_POST);die;
+
+    
     $id_barang = $_POST["id_barang"];
     $nama_barang = $_POST["nama_barang"];
     $stock = $_POST["stock"];
@@ -12,23 +20,6 @@
     $harga_total = $_POST["harga_total"];
     $cash = $_POST["cash"];
     $cashback = $_POST["cashBack"];
-
-    
-
-    //     // Isi manual untuk variabel-variabel lainnya
-    // $token = "TRX001"; // ID Transaksi
-    // $id_barang = "BRG001"; // ID Barang
-    // $nama_barang = "Laptop ASUS"; // Nama Barang
-    // $stock = 10; // Stock barang
-    // $harga_subtotal = 5000000; // Harga subtotal
-    // $id_cust = "CUST001"; // ID Customer
-    // $qty = 2; // Quantity (jumlah barang yang dibeli)
-    // $harga_total = 10000000; // Harga total
-    // $cash = 12000000; // Uang yang dibayarkan
-    // $cashback = 2000000; // Kembalian
-
-
-    
 
 ?>
 
@@ -90,7 +81,7 @@
             font-size: 0.9rem;
             color: #6c757d;
         }
-       
+    
         .print-button {
             position: fixed;
             top: 20px;
@@ -113,7 +104,9 @@
         <div class="invoice-header">
             <h1>Invoice Pembayaran</h1>
             <p class="text-muted">Transaksi Berhasil</p>
-            <button class="print-button" onclick="window.print()">==</button>
+                <button class="print-button" onclick="window.print()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-printer"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>
+                </button>
 
     <head>
         <meta charset="UTF-8">
@@ -176,9 +169,34 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    
+    
+    
+    
+    
+    
+    
     <script>
     window.onload = function() {
-        window.print();
+        window.print(); // Membuka dialog print
+
+    // Jika user selesai print atau menekan cancel, langsung redirect
+    window.onafterprint = function() {
+        // document.body.style.visibility = "visible";
+        window.location.href = "../transaksi.php";
+    };
+
+    // Jika user menekan "Cancel" atau keluar dari print dialog
+    window.onblur = function() {
+        window.location.href = "../transaksi.php";
+    };
+
+    // Tetap redirect otomatis setelah 5 detik jika tidak ada tindakan
+    setTimeout(function() {
+        // document.body.style.visibility = "hidden";
+        window.location.href = "../transaksi.php";
+    }, 15000);
     }
 </script>
 </body>

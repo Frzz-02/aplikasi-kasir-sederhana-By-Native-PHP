@@ -14,7 +14,7 @@ $query = "SELECT detil_penjualan.id_barang, detil_penjualan.jml_barang, detil_pe
         FROM detil_penjualan INNER JOIN penjualan ON detil_penjualan.id_transaksi = penjualan.id_transaksi 
         INNER JOIN barang ON detil_penjualan.id_barang = barang.id_barang 
         INNER JOIN pelanggan ON penjualan.id_pelanggan = pelanggan.id_pelanggan 
-            WHERE detil_penjualan.id_barang = '$noItem' AND penjualan.id_pelanggan = '$noClient' AND penjualan.nomor_transaksi = '$noTrans'";
+            WHERE penjualan.id_pelanggan = '$noClient' AND penjualan.nomor_transaksi = '$noTrans'";
 
 $data_transaksi = show_item($query);
 $id_barang = [];
@@ -22,9 +22,6 @@ $qty_barang_dibeli = [];
 $harga_subtotal = [];
 $nama_barang = [];
 $harga_barang = [];
-
-
-
 
 
 
@@ -43,7 +40,7 @@ $harga_barang = [];
         $harga_barang[] = $value['harga_barang'];
     }
     
-
+    
 
     
 
@@ -55,7 +52,7 @@ $harga_barang = [];
     $id_pelanggan = $data_transaksi[0]['id_pelanggan'];
 
 
-
+// var_dump($data_transaksi);
 
 
 ?>
@@ -144,7 +141,9 @@ $harga_barang = [];
         <div class="invoice-header">
             <h1>Invoice Pembayaran</h1>
             <p class="text-muted">Transaksi Berhasil</p>
-            <button class="print-button" onclick="window.print()">==</button>
+                <button class="print-button" onclick="window.print()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-printer"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>
+                </button>
 
     <head>
         <meta charset="UTF-8">
@@ -191,7 +190,6 @@ $harga_barang = [];
                                 
                                 
 
-                           
                             </tr>
                             
                             <?php endfor; ?>
