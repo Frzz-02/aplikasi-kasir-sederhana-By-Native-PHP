@@ -15,9 +15,7 @@ session_start();
         if($keterangan[0] > 0){
             
 
-            
-            $_SESSION['role'] = $keterangan[2];
-            $_SESSION['login'] = true;
+            $_SESSION['login'] = password_hash($keterangan[2], PASSWORD_DEFAULT);
             $nama = $keterangan[1];
             
 

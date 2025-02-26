@@ -1,5 +1,5 @@
 <?php 
-
+    require '../function/koneksi.php';
     $style_pagination = [ " ", "active", " ", " " ];
 ?>
 
