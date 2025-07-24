@@ -1,0 +1,3 @@
+<FilesMatch "del.php|function.php">
+    Require all denied
+</FilesMatch>

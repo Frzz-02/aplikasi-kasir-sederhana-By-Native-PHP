@@ -32,6 +32,7 @@ $harga_barang = [];
         //variabel di bawah ini yang akan dipakai nanti :
 
 //1. variabel di bawah ini membutuhkan looping untuk menapilkan datanya
+
     foreach ($data_transaksi as $value) {
         $id_barang[] = $value['id_barang'];
         $qty_barang_dibeli[] = $value['jml_barang'];
@@ -134,14 +135,24 @@ $harga_barang = [];
         .print-button:hover {
             background-color: #45a049;
         }
+
+        @media print{
+            .invoice_print{
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container invoice-container">
-        <div class="invoice-header">
+    <div class="container invoice-container ">
+        <a href="http://localhost/Aplikasi-kasir/main-page/detailTransaksi.php" style="font-size: 115%;" class="ms-4 d-print-none icon-link icon-link-hover d-flex align-items-center" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left me-2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+            Kembali
+            </a>
+        <div class="invoice-header p-4">
             <h1>Invoice Pembayaran</h1>
             <p class="text-muted">Transaksi Berhasil</p>
-                <button class="print-button" onclick="window.print()">
+            <button class="print-button" onclick="window.print()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-printer"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>
                 </button>
 
@@ -166,7 +177,7 @@ $harga_barang = [];
         <div class="invoice-details">
             <h2>Detail Transaksi</h2>
             <p><strong>ID Transaksi:</strong> <?= $noTrans; ?></p>
-            <p><strong>ID Customer:</strong> <?= $noClient; ?></p>
+            <p><strong>ID Customer:</strong> <?php if ($noClient != "0") echo $noClient; else echo ' -'; ?></p>
         </div>
         <div class="invoice-table">
             <table class="table table-bordered">

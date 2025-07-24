@@ -1,6 +1,6 @@
 
 <?php
-session_start();
+// session_start();
 require '../function/koneksi.php';
 require 'function.php';
 require 'act-client/function.php';
@@ -60,6 +60,12 @@ if (isset($_POST['submit'])) {
         
     }
 }
+
+
+if (isset($_POST['hapus_client'])) {
+    $_SESSION['akses_delete_valid'] = true;
+    header("location: act-client/del.php?id=" . $_POST['hapus_client']);
+}
 ?>
 
 
@@ -94,8 +100,8 @@ if (isset($_POST['submit'])) {
 
     <div class="main-content">
         <div class="container mt-4">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>Manajemen Pelanggan</h2>
+            <div class="d-flex justify-content-around align-items-center mb-5">
+                <h3 class="fw-semibold">Manajemen Pelanggan</h3>
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahPelanggan">
                     Tambah Pelanggan
                 </button>
@@ -110,8 +116,8 @@ if (isset($_POST['submit'])) {
 
 
 
-
-            <div class="card">
+        <div class="d-flex justify-content-center">
+            <div class="card w-75 text-center">
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-striped">
@@ -120,7 +126,10 @@ if (isset($_POST['submit'])) {
                                     <th>No</th>
                                     <th>Nama Pelanggan</th>
                                     <th>Gender</th>
-                                    <th>Aksi</th>
+
+                                    <?php if ($role === 'Admin') :?>
+                                        <th>Aksi</th>
+                                    <?php endif; ?>
                                 </tr>
                             </thead>
                             <tbody>
@@ -145,6 +154,10 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
             </div>
+        </div>
+
+
+
         </div>
     </div>
 

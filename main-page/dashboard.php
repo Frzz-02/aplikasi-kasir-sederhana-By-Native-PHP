@@ -2,6 +2,14 @@
     require '../function/koneksi.php';
     require 'function.php';
 
+
+
+
+
+
+
+
+
     $pelanggan = calculate("pelanggan");
     $transaksi = calculate("detil_penjualan");
     $produk = calculate("barang");
@@ -32,7 +40,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Donuts - Admin Dashboard</title>
+    <title>World Donuts - <?= $role; ?> Dashboard</title>
     <link rel="stylesheet" href="../css/dashboard.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -50,23 +58,23 @@
 
 <div class="main-content">
     <div class="header">
-        <h1>Welcome to World Donuts Admin Dashboard</h1>
+        <h2 class="fw-semibold">Welcome to World Donuts <?= $role; ?> Dashboard</h2>
     </div>
 
-    <div class="dashboard-grid">
-        <div class="dashboard-card" style="background-color: blue;">
+    <div class="dashboard-grid ">
+        <div class="dashboard-card mb-5" style="background-color: blue;">
             <h3>Total Penjualan</h3>
             <p>Rp 0</p>
         </div>
-        <div class="dashboard-card" style="background-color: brown;">
+        <div class="dashboard-card mb-5" style="background-color: brown;">
             <h3>Total Produk</h3>
             <p><?= $produk;?> items</p>
         </div>
-        <div class="dashboard-card" style="background-color: yellow;">
+        <div class="dashboard-card mb-5" style="background-color: yellow;">
             <h3>Total Pelanggan</h3>
             <p><?= $pelanggan;?> customers</p>
         </div>
-        <div class="dashboard-card" style="background-color: green;">
+        <div class="dashboard-card mb-5" style="background-color: green;">
             <h3>Transaksi Hari Ini</h3>
             <p><?= $transaksi; ?> transactions</p>
         </div>

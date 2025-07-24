@@ -1,4 +1,14 @@
 <?php
+
+    $user_name = $_SESSION['user_name'];
+    
+    if (password_verify('admin', $_SESSION['login'])) {
+        $role = 'Admin';
+    }else {
+        $role = 'Pegawai';
+    }
+
+
     function calculate($table){
         global $koneksi;
 

@@ -1,10 +1,4 @@
 <?php 
-session_start();
-
-    if (isset($_SESSION['login'])) {
-            header('location: ../dashboard.php');die;
-    }
-    
     require 'function.php';
     
 
@@ -17,7 +11,7 @@ session_start();
 
             $_SESSION['login'] = password_hash($keterangan[2], PASSWORD_DEFAULT);
             $nama = $keterangan[1];
-            
+            $_SESSION['user_name'] = $nama;
 
 
 
@@ -26,14 +20,14 @@ session_start();
                 echo "<script type='text/javascript'>
                 var nama = '" . $nama . "';
                 alert('Selamat datang ' + nama + ' !');
-                document.location.href = '../dashboard.php';
+                document.location.href = '../main-page/dashboard.php';
                 </script>";
             }else{
 
                 echo "<script type='text/javascript'>
                         var nama = '" . $nama . "';
                         alert('Selamat datang ' + nama + ' !');
-                        document.location.href = '../dashboard.php';
+                        document.location.href = '../main-page/dashboard.php';
                         </script>
                         ";
             }

@@ -1,0 +1,3 @@
+<FilesMatch "sidebar.php">
+    Require all denied
+</FilesMatch>

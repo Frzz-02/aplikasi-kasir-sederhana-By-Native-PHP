@@ -1,9 +1,11 @@
 <?php
 session_start();
 
-// if (isset($_SESSION['admin']) || isset($_SESSION['pegawai'])) {
-//     header('location: ../dashboard.php');exit;
-// }
+if (!isset($_SESSION["user_logout"])) {
+    // Jika file dibuka langsung di browser, redirect ke halaman lain
+    header("Location: ../interface/login.php");
+    exit;
+}
 
 
 

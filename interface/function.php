@@ -1,6 +1,8 @@
 <?php
 require '../function/koneksi.php';
 
+
+
 function login($data){
     global $koneksi;
     $usname = mysqli_real_escape_string($koneksi, $data[0]);

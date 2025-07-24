@@ -17,7 +17,7 @@
             <!-- <table class="table"></table> -->
             <table class="table pt-5" id="tabelBarang">
                 <tbody class="p-5 tabel-body">
-
+                    <!-- ini nanti akan diisi oleh javascript di file script.js -->
                 </tbody>
             </table>
         </div>

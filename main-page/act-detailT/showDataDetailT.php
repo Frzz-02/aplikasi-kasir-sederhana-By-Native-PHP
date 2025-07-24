@@ -1,24 +1,38 @@
-<tr>
+
+
+
+
+
+<tr class="text-center">
     <td><?= $pj['nomor_transaksi']; ?></td>
     <td><?= $pj['id_barang']; ?></td>
     <td><?= $pj['jml_barang']; ?></td>
     <td><?= $pj['harga_satuan']; ?></td>
     <td>
-        
-    <form action="invoice.php" method="post" style="display: inline;">
-    <input type="hidden" name="id_barang" value="<?= $pj['id_barang']; ?>">
-    <input type="hidden" name="nomor_transaksi" value="<?= $pj['nomor_transaksi']; ?>">
-    <input type="hidden" name="id_pelanggan" value="<?= $pj['id_pelanggan']; ?>">
-    <button type="submit" class="btn btn-sm btn-info" name="Invoice">Invoice</button>
-</form>
 
-<form action="" method="post" style="display: inline;">
+
+    <?php //if ($role != 'Admin') :?>
+        <form action="invoice.php" method="post" style="display: inline;" class="d-print-none">
+            <input type="hidden" name="id_barang" value="<?= $pj['id_barang']; ?>">
+            <input type="hidden" name="nomor_transaksi" value="<?= $pj['nomor_transaksi']; ?>">
+            <input type="hidden" name="id_pelanggan" value="<?= $pj['id_pelanggan']; ?>">
+            <button type="submit" class="btn btn-sm btn-info fw-medium" name="Invoice">Show invoice</button>
+        </form>
+    <?php //endif; ?>
+
+
+<!-- <form action="" method="post" style="display: inline;">
     <button type="submit" 
             onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');" 
             name="del_detail" 
             class="btn btn-danger btn-sm"
-            value="<?= $pj["id_transaksi_detil"]; ?>">Hapus</button>
-</form>
+            value="<?//= $pj["id_transaksi_detil"]; ?>">Hapus</button>
+</form> -->
+
+
+
+
+
 
 
 

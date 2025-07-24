@@ -3,7 +3,7 @@
     require '../function.php';
     require 'function.php';
 
-    session_start();
+    // session_start();
 
 
 
@@ -28,7 +28,12 @@
                 endif;
                 
                 
-            else: $_SESSION['id'] = $_POST["edit"];
+            else: 
+                if(isset($_POST["edit"])){
+                    $_SESSION['id'] = $_POST["edit"];
+                }else{
+                    header("location: ../dashboard.php");exit;
+                }
         endif;
         
         $id = $_SESSION['id'];

@@ -1,0 +1,3 @@
+<FilesMatch "function.php|showData.php|update.php">
+    Require all denied
+</FilesMatch>

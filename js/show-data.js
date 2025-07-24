@@ -1,3 +1,15 @@
+document.getElementById("start-date").addEventListener("change", function() {
+    let startDate = this.value; // Ambil nilai start date
+    document.getElementById("end-date").setAttribute("min", startDate);
+});
+
+
+
+
+
+
+
+
 // function show() {
     const editButtons = document.querySelectorAll('button[data-bs-target="#editPelanggan"]');
 

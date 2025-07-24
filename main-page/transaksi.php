@@ -1,5 +1,6 @@
 <?php 
     require '../function/koneksi.php';
+    require 'function.php';
     $style_pagination = [ " ", "active", " ", " " ];
 ?>
 
@@ -31,6 +32,12 @@
             /* top: 100; */
             z-index: 99999;
         }
+
+        @media print{
+            .aksi-invc{
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -56,7 +63,7 @@
 
 
     <div class="container">
-        <h1 class="mt-4">Daftar Barang</h1>
+        <h1 class="mt-4 mb-3 fw-semibold">Daftar Barang</h1>
         
         <!-- Search Bar -->
         <div class="form-group">
@@ -82,7 +89,7 @@
                         <th>Harga</th>
                         <th>Qty</th>
                         <th>Subtotal</th>
-                        <th>Aksi</th>
+                        <th class="aksi-invc d-print-none"</th>
                     </tr>
                 </thead>
 
@@ -121,24 +128,27 @@
             
 
                 <label for="customer-id">Harga Total:</label>
-                <input type="text" id="total-price" name="total-price" class="form-control" value="0" placeholder="Masukkan ID Pelanggan" disabled>
+                <input type="text" id="total-price" name="total-price" class="form-control mt-1" value="0" placeholder="Masukkan ID Pelanggan" disabled>
             </div>
             <div style="height: 20px;"></div>
             <!-- <h4>Total Harga: <span id="total-price">30000</span></h4> -->
             <div class="form-group">
                 <label for="customer-id">ID Pelanggan:</label>
-                <input name="id-cust" type="text" id="customer-id" class="form-control" placeholder="Masukkan ID Pelanggan">
+                <input name="id-cust" type="text" id="customer-id" class="form-control mt-1" placeholder="Masukkan ID Pelanggan">
             </div>
             <div style="height: 20px;"></div>
             <div class="form-group">
     <label for="payment">Pembayaran:</label>
-    <input name="pay" type="number" id="payment" class="form-control" placeholder="Masukkan Jumlah Pembayaran">
+    <input name="pay" type="number" id="payment" class="form-control mt-1" placeholder="Masukkan Jumlah Pembayaran">
+    
+    <p class="text-danger err-pay">Pembayaran wajib diisi !</p>
 </div>
 
 <!-- Tambahkan div kosong untuk jarak -->
 <div style="height: 20px;"></div>
 
-<button id="submit" type="button" name="transaksiModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#transaction">
+<button id="submit" type="button" 
+name="transaksiModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#transaction" disabled>
     Proses Pembayaran
 </button>
 

@@ -2,8 +2,8 @@
 require '../function/koneksi.php';
 require 'act-item/function.php';
 require 'function.php';
-session_start();
-
+// session_start();
+// var_dump($role);
 if (isset($_POST["cari"])) {
     $items = show_item("SELECT * FROM barang WHERE nama_barang LIKE '%" . $_POST["keyword"] . "%' OR id_barang LIKE '%" . $_POST["keyword"] . "%'");
 } else {
@@ -92,12 +92,16 @@ $style_pagination = [ " ", " ", "active", " " ];
     
     <div class="container my-4">
         <header class="text-center mb-4">
-            <h1>Daftar Donuts</h1>
+            <h1 class="fw-semibold mb-4">Daftar Donuts</h1>
             <form action="" method="post">
-                <div class="input-group mb-3">
-                    <input type="search" class="form-control p-2" name="keyword" placeholder="Cari barang berdasarkan ID atau nama barang">
-                    <button class="btn btn-outline-secondary rounded-end-5 p-2 px-4" type="submit" name="cari">Search</button>
-                    <a href="act-item/add.php" class="btn btn-success rounded-3 fw-bold px-3 ms-3" style="padding: 12px; margin-left: 15px;">+</a>
+                <div class="input-group mb-4">
+                    <input type="search" class="form-control p-2 border border-secondary mb-4" name="keyword" placeholder="Cari barang berdasarkan ID atau nama barang">
+                    <button class="btn btn-outline-secondary rounded-end-5 p-2 px-4 mb-4" type="submit" name="cari">Search</button>
+                    
+                    <?php if ($role === 'Admin') :?>
+                        <a href="act-item/add.php" class="btn btn-success rounded-3 fw-bold px-3 ms-3 mb-4" style="padding: 12px; margin-left: 15px;">+</a>
+                    <?php endif; ?>
+                    
                 </div>
             </form>
         </header>
@@ -118,6 +122,7 @@ $style_pagination = [ " ", " ", "active", " " ];
                                 <p class="card-text">Stock: <?= $item["stock"]; ?></p>
                             </div>
                             <div class="card-footer d-flex justify-content-between">
+                            <?php if ($role === 'Admin') :?>
                                 <form action="act-item/edit.php" method="post">
                                     <button type="submit" class="btn btn-primary btn-sm" name="edit" value="<?= $item["id_barang"]; ?>">Edit</button>
                                 </form>
@@ -126,6 +131,7 @@ $style_pagination = [ " ", " ", "active", " " ];
                                     <input type="hidden" name="img" value="<?= $item["image"]; ?>">
                                     <button type="submit" name="del" class="btn btn-danger btn-sm">Hapus</button>
                                 </form>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

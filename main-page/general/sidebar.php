@@ -19,17 +19,20 @@
 
 
 
+<?php 
+  // var_dump($role);
+  if (isset($_POST['user_logout']) && $_POST['user_logout'] === "logout") {
+      $_SESSION['user_logout'] = true;
+      header("location: ../function/logout.php");
+  }
+
+?>
 
 
 
 
 
-
-
-
-
-
-<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+<div class="d-print-none d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
       <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
       <span class="fs-4">FZ Shop</span>
@@ -47,12 +50,18 @@
       
 
 
+
+      
+    <?php if ($role != 'Admin') :?>
       <li class="page-item child-nav">
         <a href="transaksi.php" class="page-link d-flex align-items-center nav-link text-white <?= $style_pagination[1]; ?>">
         <svg class="me-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
           Orders
         </a>
       </li>
+    <?php endif; ?>
+
+
 
 
 
@@ -87,18 +96,32 @@
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>Zulfi (Admin)</strong>
+        <strong><?= $user_name; ?> (<?= $role; ?>)</strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-        <li><a class="dropdown-item" href="../interface/register.php">Tambahkan Karyawan</a></li>
+
+
+        <?php if ($role === 'Admin') :?>
+          <li><a class="dropdown-item" href="../interface/register.php">Tambahkan Karyawan</a></li>
+        <?php endif; ?>
+
+
         <li><a class="dropdown-item" href="detailTransaksi.php">Laporan</a></li>
-        <li><a class="dropdown-item" href="profil.php">Profile</a></li>
+        <!-- <li><a class="dropdown-item" href="profil.php">Profile</a></li> -->
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="../function/logout.php">Sign out</a></li>
+        
+        
+        <li>
+          <form action="" method="post">
+            <button class="dropdown-item" name="user_logout" value="logout">Sign out</button>
+          </form>
+        </li>
+
+
       </ul>
     </div>
   </div>
-<div class="b-example-divider b-example-vr"></div>
+<div class="b-example-divider b-example-vr d-print-none "></div>
 
 
 <!-- karyawan -->
